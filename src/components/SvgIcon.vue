@@ -25,26 +25,20 @@ const props = defineProps({
     default: ''
   }
 })
-
 const styleExternalIcon = computed(() => {
   return {
     mask: `url(${props.icon}) no-repeat 50% 50%`,
     '-webkit-mask': `url(${props.icon}) no-repeat 50% 50%`
   }
 })
-
 const isExternal = computed(() => {
   console.log(external(props.icon))
   return external(props.icon)
 })
-
 const iconName = computed(() => {
   return `#icon-${props.icon}`
 })
-
-
 </script>
-
 <style scoped>
 .svg-icon {
   width: 1em;
