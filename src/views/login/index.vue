@@ -42,10 +42,14 @@
 </template>
 
 <script setup>
-import UserApi from '../../api/user'
+// import UserApi from '../../api/user'
+import util from '../../utils/util'
 import { reactive, ref, computed } from 'vue'
+import { useStore } from 'vuex'
 import { validatePassword } from './rule'
 import md5 from 'md5'
+
+const store = useStore()
 
 const inputType = ref('password')
 
@@ -80,15 +84,16 @@ const passwordIconStatus = computed(() => {
 
 // 登录方式
 const handleLoginSubmit = async () => {
-  // console.log('123')
   if (!LoginForm.value) return
-  // console.log('456')
   await LoginForm.value.validate(async (valid) => {
     if (valid) {
       // alert('登录')
-      loginForm.password = md5(loginForm.password)
-      const response = await UserApi.login(loginForm)
-      console.log(response)
+      const newLoginForm = util.deepCopy(loginForm)
+      newLoginForm.password = md5(newLoginForm.password)
+      // console.log(newLoginForm)
+      // const response = await UserApi.login(newLoginForm)
+      // console.log(response)
+      store.dispatch('user/login', newLoginForm)
     }
   })
 }
