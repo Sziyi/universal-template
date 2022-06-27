@@ -16,7 +16,7 @@
             <svg-icon icon="user"></svg-icon>
           </el-icon>
         </span>
-        <el-input v-model="loginForm.username" />
+        <el-input v-model.trim="loginForm.username" />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
@@ -24,17 +24,17 @@
             <svg-icon icon="password"></svg-icon>
           </el-icon>
         </span>
-        <el-input :type="inputType" v-model="loginForm.password"></el-input>
-        <span class="svg-pwd" @click="handllePassWordStatus">
+        <el-input
+          :type="inputType"
+          v-model.trim="loginForm.password"
+        ></el-input>
+        <span class="svg-pwd" @click="handlePassWordStatus">
           <el-icon>
             <svg-icon :icon="passwordIconStatus"></svg-icon>
           </el-icon>
         </span>
       </el-form-item>
-      <el-button
-        class="login-button"
-        type="primary"
-        @click="handleLoginSubmit(LoginForm)"
+      <el-button class="login-button" type="primary" @click="handleLoginSubmit"
         >登录</el-button
       >
     </el-form>
@@ -42,16 +42,20 @@
 </template>
 
 <script setup>
+import UserApi from '../../api/user'
 import { reactive, ref, computed } from 'vue'
 import { validatePassword } from './rule'
+import md5 from 'md5'
 
 const inputType = ref('password')
 
+const LoginForm = ref()
+
 const loginForm = reactive({
-  username: 'admin',
+  username: 'super-admin',
   password: '123456'
 })
-
+// 登录input属性
 const loginRules = reactive({
   username: [
     {
@@ -69,20 +73,28 @@ const loginRules = reactive({
   ]
 })
 
+// 密码的状态切换
 const passwordIconStatus = computed(() => {
   return inputType.value === 'password' ? 'eye' : 'eye-open'
 })
 
-const handleLoginSubmit = async (formName) => {
-  if (!formName) return
-  await formName.validate((valid) => {
+// 登录方式
+const handleLoginSubmit = async () => {
+  // console.log('123')
+  if (!LoginForm.value) return
+  // console.log('456')
+  await LoginForm.value.validate(async (valid) => {
     if (valid) {
-      alert('登录')
+      // alert('登录')
+      loginForm.password = md5(loginForm.password)
+      const response = await UserApi.login(loginForm)
+      console.log(response)
     }
   })
 }
 
-const handllePassWordStatus = () => {
+// 密码的状态切换的方法
+const handlePassWordStatus = () => {
   inputType.value = inputType.value === 'password' ? 'text' : 'password'
 }
 </script>
