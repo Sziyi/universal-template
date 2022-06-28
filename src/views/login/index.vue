@@ -46,11 +46,13 @@
 import util from '../../utils/util'
 import { reactive, ref, computed } from 'vue'
 import { useStore } from 'vuex'
-import router from '../../router/index.js'
+import { useRouter } from 'vue-router'
 import { validatePassword } from './rule'
 import md5 from 'md5'
 
 const store = useStore()
+
+const router = useRouter()
 
 const inputType = ref('password')
 
@@ -91,11 +93,8 @@ const handleLoginSubmit = async () => {
       // alert('登录')
       const newLoginForm = util.deepCopy(loginForm)
       newLoginForm.password = md5(newLoginForm.password)
-      // console.log(newLoginForm)
-      // const response = await UserApi.login(newLoginForm)
-      // console.log(response)
-      store.dispatch('user/login', newLoginForm)
-      router.push('/')
+      const response = await store.dispatch('user/login', newLoginForm)
+      if (response.token) router.push('/')
     }
   })
 }

@@ -9,6 +9,7 @@
 
 // 导入axios
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 
 import md5 from 'md5'
 // loading
@@ -44,14 +45,21 @@ service.interceptors.response.use(
   (response) => {
     // 关闭loading加载
     loading.close()
-    // TODO token过期状态
-
+    const { success, data, message } = response.data
     // TODO全局响应处理
-    return response
+    if (success) {
+      return data
+    } else {
+      ElMessage.error(message)
+      return Promise.reject(new Error(message))
+    }
+    // TODO token过期状态
   },
   (error) => {
     // 关闭loading加载
     loading.close()
+    // 响应失败进行信息提示
+    ElMessage.error(error.message)
     return Promise.reject(error)
   }
 )

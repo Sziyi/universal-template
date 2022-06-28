@@ -38,19 +38,28 @@
             <el-menu-item-group>
               <el-menu-item index="1-1">
                 <el-icon>
-                  <svg-icon className="svg-personnel-manage" icon="personnel-manage"></svg-icon>
+                  <svg-icon
+                    className="svg-personnel-manage"
+                    icon="personnel-manage"
+                  ></svg-icon>
                 </el-icon>
-                员工管理</el-menu-item>
+                员工管理</el-menu-item
+              >
               <el-menu-item index="1-2">
                 <el-icon>
                   <svg-icon className="svg-role" icon="role"></svg-icon>
                 </el-icon>
-                角色列表</el-menu-item>
+                角色列表</el-menu-item
+              >
               <el-menu-item index="1-3">
                 <el-icon>
-                  <svg-icon className="svg-permission" icon="permission"></svg-icon>
+                  <svg-icon
+                    className="svg-permission"
+                    icon="permission"
+                  ></svg-icon>
                 </el-icon>
-                权限列表</el-menu-item>
+                权限列表</el-menu-item
+              >
             </el-menu-item-group>
           </el-sub-menu>
           <el-sub-menu index="5">
@@ -63,14 +72,22 @@
             <el-menu-item-group>
               <el-menu-item index="2-1">
                 <el-icon>
-                  <svg-icon className="svg-article-ranking" icon="article-ranking"></svg-icon>
+                  <svg-icon
+                    className="svg-article-ranking"
+                    icon="article-ranking"
+                  ></svg-icon>
                 </el-icon>
-                文章排名</el-menu-item>
+                文章排名</el-menu-item
+              >
               <el-menu-item index="2-2">
                 <el-icon>
-                  <svg-icon className="svg-article-create" icon="article-create"></svg-icon>
+                  <svg-icon
+                    className="svg-article-create"
+                    icon="article-create"
+                  ></svg-icon>
                 </el-icon>
-                创建文章</el-menu-item>
+                创建文章</el-menu-item
+              >
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
@@ -80,29 +97,42 @@
           <div class="navbar">
             <div class="icon" @click="isCollapse = !isCollapse">
               <el-icon v-if="isCollapse === false">
-                <svg-icon className="svg-hamburger-opened" icon="hamburger-opened"></svg-icon>
+                <svg-icon
+                  className="svg-hamburger-opened"
+                  icon="hamburger-opened"
+                ></svg-icon>
               </el-icon>
               <el-icon v-if="isCollapse === true">
-                <svg-icon className="svg-hamburger-closed" icon="hamburger-closed"></svg-icon>
+                <svg-icon
+                  className="svg-hamburger-closed"
+                  icon="hamburger-closed"
+                ></svg-icon>
               </el-icon>
             </div>
-             <div class="icons">
-                <el-icon>
-                  <svg-icon className="svg-guide" icon="guide"></svg-icon>
-                </el-icon>
-                <el-icon>
-                  <svg-icon className="svg-search" icon="search"></svg-icon>
-                </el-icon>
-                <el-icon>
-                  <svg-icon className="svg-fullscreen" icon="fullscreen"></svg-icon>
-                </el-icon>
-                <el-icon>
-                  <svg-icon className="svg-change-theme" icon="change-theme"></svg-icon>
-                </el-icon>
-                <el-icon>
-                  <svg-icon className="svg-language" icon="language"></svg-icon>
-                </el-icon>
-            <img src="../../assets/logo-small@2x.png" class="img1" /></div>
+            <div class="icons">
+              <el-icon>
+                <svg-icon className="svg-guide" icon="guide"></svg-icon>
+              </el-icon>
+              <el-icon>
+                <svg-icon className="svg-search" icon="search"></svg-icon>
+              </el-icon>
+              <el-icon>
+                <svg-icon
+                  className="svg-fullscreen"
+                  icon="fullscreen"
+                ></svg-icon>
+              </el-icon>
+              <el-icon>
+                <svg-icon
+                  className="svg-change-theme"
+                  icon="change-theme"
+                ></svg-icon>
+              </el-icon>
+              <el-icon>
+                <svg-icon className="svg-language" icon="language"></svg-icon>
+              </el-icon>
+              <img src="../../assets/logo-small@2x.png" class="img1" />
+            </div>
           </div>
         </el-header>
         <el-main>Main</el-main>
@@ -143,32 +173,31 @@ const isCollapse = ref(false)
   .navbar {
     height: 50px;
     background-color: aqua;
-     .icon {
-    width: 40px;
-    height: 50px;
-    float: left;
-    .el-icon {
-      margin-left: 10px;
-      margin-top: 10px;
+    .icon {
+      width: 40px;
+      height: 50px;
+      float: left;
+      .el-icon {
+        margin-left: 10px;
+        margin-top: 10px;
+      }
     }
-  }
-   .icon:hover {
+    .icon:hover {
       background-color: rgb(249, 247, 247);
     }
     .img1 {
       width: 40px;
       height: 40px;
-       margin-left: 15px;
-       margin-top: 3px;
+      margin-left: 15px;
+      margin-top: 3px;
     }
-    .icons{
-        float: right;
-        .el-icon{
-            margin-left: 15px;
-            vertical-align: .5em;
-        }
+    .icons {
+      float: right;
+      .el-icon {
+        margin-left: 15px;
+        vertical-align: 0.5em;
+      }
     }
   }
- 
 }
 </style>
