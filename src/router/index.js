@@ -10,12 +10,12 @@ const publicRoutes = [
     path: '/',
     name: 'layout',
     component: () => import('../layout')
-  },
-  {
-    path: '/',
-    name: 'profile',
-    component: () => import('../views/profile')
   }
+  // {
+  //   path: '/',
+  //   name: 'profile',
+  //   component: () => import('../views/profile')
+  // }
 ]
 
 const router = createRouter({
