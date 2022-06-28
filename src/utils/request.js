@@ -60,7 +60,7 @@ const request = (options) => {
   if (options.method.toLowerCase() === 'post') {
     options.params = options.data || {}
   }
-  service(options)
+  return service(options)
 }
 
 // 获取icode

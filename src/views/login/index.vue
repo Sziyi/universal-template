@@ -46,6 +46,7 @@
 import util from '../../utils/util'
 import { reactive, ref, computed } from 'vue'
 import { useStore } from 'vuex'
+import router from '../../router/index.js'
 import { validatePassword } from './rule'
 import md5 from 'md5'
 
@@ -94,6 +95,7 @@ const handleLoginSubmit = async () => {
       // const response = await UserApi.login(newLoginForm)
       // console.log(response)
       store.dispatch('user/login', newLoginForm)
+      router.push('/')
     }
   })
 }
