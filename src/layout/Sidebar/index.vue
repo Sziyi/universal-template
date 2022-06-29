@@ -1,88 +1,64 @@
 <template>
   <div>
-    <Item v-for="(item,i) in array" :key="i" :item = "item" />
+    <menu-tree :menu="menuList"></menu-tree>
   </div>
 </template>
 
 <script setup>
 import { reactive } from 'vue'
-import Item from './Item'
-
-const data = [
+import MenuTree from './MenuTree'
+const menuList = reactive([
   {
-    id: 1,
-    name: 'IT互联网',
+    title: '个人中心',
+    path: '/profile'
+  },
+  {
+    title: '用户',
     children: [
       {
-        id: 11,
-        name: '前端',
+        title: '员工管理',
+        path: '/staff',
         children: [
           {
-            id: 111,
-            name: 'html',
-            children: [
-              {
-                id: 11113,
-                name: 'p'
-              },
-              {
-                id: 11114,
-                name: 'h1'
-              },
-              {
-                id: 11115,
-                name: 'ul'
-              }
-            ]
+            title: '市场员工'
           },
           {
-            id: 112,
-            name: 'css'
-          },
-          {
-            id: 113,
-            name: 'javascript'
+            title: '研发员工'
           }
         ]
       },
       {
-        id: 12,
-        name: '后端'
+        title: '角色列表',
+        path: '/role',
+        children: [
+          {
+            title: '用户角色'
+          },
+          {
+            title: '员工角色'
+          }
+        ]
       },
       {
-        id: 13,
-        name: '运维'
+        title: '权限列表',
+        path: '/premission'
       }
     ]
   },
   {
-    id: 2,
-    name: '设计创作',
+    title: '文章',
     children: [
       {
-        id: 22,
-        name: '平面设计'
+        title: '文章排名',
+        path: '/article'
       },
       {
-        id: 23,
-        name: '网页设计'
+        title: '创建文章',
+        path: '/create'
       }
     ]
-  },
-  {
-    id: 3,
-    name: '升学考研',
-    chidlren: []
-  },
-  {
-    id: 1,
-    name: '职企考证',
-    chidlren: []
   }
-]
-
-const array = reactive(data)
-
+])
 </script>
 
 <style lang="scss" scoped>

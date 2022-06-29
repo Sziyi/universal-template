@@ -31,8 +31,8 @@ import AppMain from './AppMain'
     left : 0;
     top : 0;
     bottom : 0;
-    -ms-overflow-style: none; /* IE 10+ */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .main-container{
@@ -51,7 +51,7 @@ import AppMain from './AppMain'
   }
 }
 ::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
+  display: none;
 }
 
 </style>
