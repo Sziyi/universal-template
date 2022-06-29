@@ -1,5 +1,5 @@
 <template>
-  <div class="">个人中心</div>
+  <div class="">角色管理</div>
 </template>
 
 <script setup></script>
