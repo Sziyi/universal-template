@@ -2,7 +2,7 @@
   <el-menu
     active-text-color="#fff"
     background-color="#304156"
-    default-active=""
+    :default-active="$route.path"
     text-color="#bfcbd9"
     unique-opened
     router
@@ -85,6 +85,7 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { filterMenuData } from '../../utils/menu'
+import { filterRouters, generateMenus } from '../../utils/router'
 import SidebarMenuItem from './SidebarMenuItem'
 
 const router = useRouter()
@@ -174,6 +175,16 @@ const data = [
 ]
 
 console.log('routes=>', router.getRoutes())
+const routes = filterRouters(router.getRoutes())
+generateMenus(routes)
+/**
+ * 最终目标:将路由表的数据处理成菜单所需要的数据
+ * 1.获取到所有的非一级路由数据
+ * 2.用所有的非一级路由数据 与完整的路由数据进行匹配，匹配出一级路由（不等于所有的非一级路由的数据）
+ * 3.将所有的一级路由数据转化为菜单数据
+ * 3.1去除登录路由数据
+ * 3.2 获取到一级路由的path name meta ,把他们放到一个数组里
+ */
 
 const menuList = reactive(filterMenuData(data))
 </script>
