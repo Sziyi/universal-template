@@ -1,5 +1,6 @@
-// 检测数据类型方法
-
+/**
+ * 检测数据类型方法
+ */
 const checkDataType = (data) => {
   const dataType = Object.prototype.toString.call(data)
   const dataTypeOptions = {
@@ -17,8 +18,9 @@ const checkDataType = (data) => {
   return dataTypeOptions[dataType]
 }
 
-//   深拷贝
-
+/**
+ * 深拷贝
+ */
 const deepCopy = (data) => {
   const type = checkDataType(data)
   let params = null

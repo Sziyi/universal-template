@@ -3,14 +3,12 @@ import { setItem, getItem } from '@/utils/storage'
 /**
  * 获取时间戳
  */
-
 export function getTimeStamp() {
   return getItem(TIME_STAMP)
 }
 /**
  * 设置时间戳
  */
-
 export function setTimeStamp() {
   setItem(TIME_STAMP, Date.now())
 }
